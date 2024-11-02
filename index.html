@@ -7,6 +7,11 @@
   <link rel="stylesheet" href="https://at.alicdn.com/t/font_2878668_urq5xu3py7.css">
 </head>
 <body>
+<div class="stars-container">
+  <div class="stars"></div>
+  <div class="shooting-stars"></div>
+</div>
+
 <div class="container">
   <div class="header">
     <img src="https://tse1-mm.cn.bing.net/th/id/OIP-C.8tlwbGsJvlNZwGAGL36W8AHaFS?rs=1&pid=ImgDetMain" class="logo animate-float" alt="宇宙传声筒">
@@ -18,7 +23,6 @@
     <div class="card">
       <div class="card-content">
         <div class="planet-animation">
-          <!-- <img src="https://tse1-mm.cn.bing.net/th/id/OIP-C.8tlwbGsJvlNZwGAGL36W8AHaFS?rs=1&pid=ImgDetMain" class="card-img rotating" alt="声音卡片"> -->
           <div class="orbit">
             <div class="satellite"></div>
           </div>
@@ -85,25 +89,92 @@
 
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  background: linear-gradient(45deg, #1a2a6c, #b21f1f, #fdbb2d);
-  background-size: 400% 400%;
-  animation: gradientBG 15s ease infinite;
   min-height: 100vh;
   color: #fff;
+  position: relative;
+  overflow-x: hidden;
+  background: linear-gradient(45deg, #1a2980, #26d0ce);
 }
 
-@keyframes gradientBG {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+.stars-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
 }
 
+.stars {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(2px 2px at 20px 30px, #fff, rgba(0,0,0,0)),
+    radial-gradient(2px 2px at 40px 70px, #fff, rgba(0,0,0,0)),
+    radial-gradient(2px 2px at 50px 160px, #fff, rgba(0,0,0,0)),
+    radial-gradient(2px 2px at 90px 40px, #fff, rgba(0,0,0,0)),
+    radial-gradient(2px 2px at 130px 80px, #fff, rgba(0,0,0,0));
+  background-repeat: repeat;
+  background-size: 200px 200px;
+  animation: twinkle 4s linear infinite;
+}
+
+.shooting-stars {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.shooting-stars::before,
+.shooting-stars::after {
+  content: "";
+  position: absolute;
+  width: 100px;
+  height: 2px;
+  background: linear-gradient(90deg, #fff, transparent);
+  animation: shooting-star 3s linear infinite;
+}
+
+.shooting-stars::before {
+  top: 30%;
+  left: -100px;
+  animation-delay: 1s;
+}
+
+.shooting-stars::after {
+  top: 60%;
+  left: -100px;
+  animation-delay: 2s;
+}
+
+@keyframes twinkle {
+  0% { opacity: 0.3; }
+  50% { opacity: 0.8; }
+  100% { opacity: 0.3; }
+}
+
+@keyframes shooting-star {
+  0% {
+    transform: translateX(0) rotate(-45deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(1000px) rotate(-45deg);
+    opacity: 0;
+  }
+}
+
+/* 其余样式保持不变 */
 .container {
   padding: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
   min-height: 100vh;
+  position: relative;
+  z-index: 1;
 }
 
 .header {
@@ -244,11 +315,6 @@ body {
   background: rgba(255,255,255,0.8);
   clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
   animation: twinkle 1.5s ease-in-out infinite;
-}
-
-@keyframes twinkle {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.3; }
 }
 
 .message-bubble {
