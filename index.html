@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>宇宙传声筒 - 播放页</title>
+  <link rel="stylesheet" href="https://at.alicdn.com/t/font_2878668_urq5xu3py7.css">
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <img src="https://tse1-mm.cn.bing.net/th/id/OIP-C.8tlwbGsJvlNZwGAGL36W8AHaFS?rs=1&pid=ImgDetMain" class="logo animate-float" alt="宇宙传声筒">
+    <h1 class="title">来自宇宙的传声筒</h1>
+    <div class="subtitle">让声音跨越星际传递温暖</div>
+  </div>
+
+  <div class="main">
+    <div class="card">
+      <div class="card-content">
+        <div class="planet-animation">
+          <!-- <img src="https://tse1-mm.cn.bing.net/th/id/OIP-C.8tlwbGsJvlNZwGAGL36W8AHaFS?rs=1&pid=ImgDetMain" class="card-img rotating" alt="声音卡片"> -->
+          <div class="orbit">
+            <div class="satellite"></div>
+          </div>
+        </div>
+        
+        <div class="audio-player">
+          <audio id="audioPlayer" controls style="width: 100%; margin: 15px 0;">
+            <source src="" type="audio/mpeg">
+            您的浏览器不支持音频播放
+          </audio>
+          <div class="audio-info">
+            <span class="current-time">00:00</span>
+            <div class="progress-bar">
+              <div class="progress"></div>
+            </div>
+            <span class="duration">00:00</span>
+          </div>
+        </div>
+        
+        <div class="message-card">
+          <i class="iconfont icon-message"></i>
+          <p class="card-text">这是一段来自宇宙的声音</p>
+          <p class="card-text">请静静聆听这份独特的心意</p>
+          <div class="stars">
+            <i class="star"></i>
+            <i class="star"></i>
+            <i class="star"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="message">
+      <div class="message-bubble">
+        <p>这是一段专属于你的声音</p>
+        <p>来自一个想对你说悄悄话的人</p>
+        <p>希望这段声音能带给你温暖</p>
+      </div>
+      <div class="message-stats">
+        <span><i class="iconfont icon-play"></i> 播放次数: <span id="playCount">0</span></span>
+        <span><i class="iconfont icon-heart"></i> 收到的喜欢: <span id="likeCount">0</span></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <button class="share-btn">
+      <i class="iconfont icon-share"></i>
+      分享给好友
+    </button>
+    <button class="create-btn">
+      <i class="iconfont icon-record"></i>
+      我也要录制
+    </button>
+  </div>
+</div>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  background: linear-gradient(45deg, #1a2a6c, #b21f1f, #fdbb2d);
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
+  min-height: 100vh;
+  color: #fff;
+}
+
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.container {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.logo {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 10px;
+  border-radius: 50%;
+  box-shadow: 0 0 20px rgba(255,255,255,0.3);
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+.title {
+  font-size: 28px;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  font-size: 16px;
+  color: rgba(255,255,255,0.8);
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 25px;
+  width: 90%;
+  max-width: 400px;
+  backdrop-filter: blur(10px);
+  margin-bottom: 30px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+  border: 1px solid rgba(255,255,255,0.2);
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.planet-animation {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  margin: 0 auto;
+}
+
+.rotating {
+  animation: rotate 20s linear infinite;
+}
+
+@keyframes rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.orbit {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 180px;
+  height: 180px;
+  margin: -90px 0 0 -90px;
+  border: 2px solid rgba(255,255,255,0.2);
+  border-radius: 50%;
+  animation: orbit 10s linear infinite;
+}
+
+.satellite {
+  position: absolute;
+  top: -5px;
+  left: 50%;
+  width: 10px;
+  height: 10px;
+  background: #fff;
+  border-radius: 50%;
+  box-shadow: 0 0 10px #fff;
+}
+
+.audio-player {
+  background: rgba(0,0,0,0.2);
+  border-radius: 15px;
+  padding: 15px;
+  margin: 20px 0;
+}
+
+.audio-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 12px;
+}
+
+.progress-bar {
+  flex: 1;
+  height: 4px;
+  background: rgba(255,255,255,0.2);
+  border-radius: 2px;
+}
+
+.progress {
+  width: 30%;
+  height: 100%;
+  background: #fff;
+  border-radius: 2px;
+}
+
+.message-card {
+  text-align: center;
+  padding: 20px;
+  position: relative;
+}
+
+.stars {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.star {
+  width: 20px;
+  height: 20px;
+  background: rgba(255,255,255,0.8);
+  clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+  animation: twinkle 1.5s ease-in-out infinite;
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+.message-bubble {
+  background: rgba(255,255,255,0.15);
+  border-radius: 15px;
+  padding: 20px;
+  margin-bottom: 15px;
+  position: relative;
+}
+
+.message-bubble:after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 10px solid rgba(255,255,255,0.15);
+}
+
+.message-stats {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  font-size: 14px;
+  color: rgba(255,255,255,0.8);
+}
+
+.footer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 0 20px;
+}
+
+button {
+  width: 100%;
+  padding: 15px;
+  border-radius: 25px;
+  border: none;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.share-btn {
+  background: rgba(255, 255, 255, 0.2);
+  color: #fff;
+  backdrop-filter: blur(5px);
+}
+
+.create-btn {
+  background: #fff;
+  color: #2c3e50;
+}
+
+.iconfont {
+  font-size: 20px;
+}
+
+@media (min-width: 768px) {
+  .footer {
+    flex-direction: row;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  button {
+    width: 200px;
+  }
+  
+  .card {
+    padding: 30px;
+  }
+}
+</style>
+
+<script>
+// 获取URL参数中的音频ID
+const urlParams = new URLSearchParams(window.location.search);
+const audioId = urlParams.get('id');
+
+// 设置音频源
+const audioPlayer = document.getElementById('audioPlayer');
+let playCount = 0;
+
+if (audioId) {
+  audioPlayer.src = `https://your-audio-server.com/audio/${audioId}.mp3`;
+}
+
+// 音频播放相关
+audioPlayer.addEventListener('play', function() {
+  playCount++;
+  document.getElementById('playCount').textContent = playCount;
+});
+
+// 更新进度条
+audioPlayer.addEventListener('timeupdate', function() {
+  const currentTime = document.querySelector('.current-time');
+  const duration = document.querySelector('.duration');
+  const progress = document.querySelector('.progress');
+  
+  const minutes = Math.floor(audioPlayer.currentTime / 60);
+  const seconds = Math.floor(audioPlayer.currentTime % 60);
+  currentTime.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+  
+  const durationMinutes = Math.floor(audioPlayer.duration / 60);
+  const durationSeconds = Math.floor(audioPlayer.duration % 60);
+  duration.textContent = `${durationMinutes.toString().padStart(2, '0')}:${durationSeconds.toString().padStart(2, '0')}`;
+  
+  const progressPercent = (audioPlayer.currentTime / audioPlayer.duration) * 100;
+  progress.style.width = `${progressPercent}%`;
+});
+
+// 获取按钮元素
+const shareBtn = document.querySelector('.share-btn');
+const createBtn = document.querySelector('.create-btn');
+
+// 分享功能
+shareBtn.addEventListener('click', function() {
+  if (navigator.share) {
+    navigator.share({
+      title: '来自宇宙的传声筒',
+      text: '听听这段独特的声音',
+      url: window.location.href
+    })
+    .then(() => console.log('分享成功'))
+    .catch((error) => console.log('分享失败:', error));
+  } else {
+    alert('请手动复制链接分享给好友');
+  }
+});
+
+// 跳转到制作页面
+createBtn.addEventListener('click', function() {
+  window.location.href = '/pages/create/create.html';
+});
+
+// 随机生成点赞数
+document.getElementById('likeCount').textContent = Math.floor(Math.random() * 100);
+</script>
+</body>
+</html>
