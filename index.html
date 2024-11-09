@@ -2,11 +2,11 @@
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>宇宙传声筒 - 播放页</title>
   <link rel="stylesheet" href="https://at.alicdn.com/t/font_2878668_urq5xu3py7.css">
 </head>
-<body>
+<body style="background: url('./static/background.jpg') center/cover no-repeat fixed;">
 <div class="stars-container">
   <div class="stars"></div>
   <div class="shooting-stars"></div>
@@ -30,7 +30,7 @@
         
         <div class="audio-player">
           <audio id="audioPlayer" controls style="width: 100%; margin: 15px 0;">
-            <source src="" type="audio/mpeg">
+            <source src="" type="audio/m4a">
             您的浏览器不支持音频播放
           </audio>
           <div class="audio-info">
@@ -46,37 +46,17 @@
           <i class="iconfont icon-message"></i>
           <p class="card-text">这是一段来自宇宙的声音</p>
           <p class="card-text">请静静聆听这份独特的心意</p>
-          <div class="stars">
-            <i class="star"></i>
-            <i class="star"></i>
-            <i class="star"></i>
-          </div>
         </div>
       </div>
     </div>
 
-    <div class="message">
+    <!-- <div class="message">
       <div class="message-bubble">
         <p>这是一段专属于你的声音</p>
         <p>来自一个想对你说悄悄话的人</p>
         <p>希望这段声音能带给你温暖</p>
       </div>
-      <div class="message-stats">
-        <span><i class="iconfont icon-play"></i> 播放次数: <span id="playCount">0</span></span>
-        <span><i class="iconfont icon-heart"></i> 收到的喜欢: <span id="likeCount">0</span></span>
-      </div>
-    </div>
-  </div>
-
-  <div class="footer">
-    <button class="share-btn">
-      <i class="iconfont icon-share"></i>
-      分享给好友
-    </button>
-    <button class="create-btn">
-      <i class="iconfont icon-record"></i>
-      我也要录制
-    </button>
+    </div> -->
   </div>
 </div>
 
@@ -85,6 +65,11 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html {
+  font-size: calc(100vw / 375 * 10);
 }
 
 body {
@@ -93,7 +78,7 @@ body {
   color: #fff;
   position: relative;
   overflow-x: hidden;
-  background: linear-gradient(45deg, #1a2980, #26d0ce);
+  font-size: 1.4rem;
 }
 
 .stars-container {
@@ -166,9 +151,8 @@ body {
   }
 }
 
-/* 其余样式保持不变 */
 .container {
-  padding: 20px;
+  padding: 2rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -179,13 +163,13 @@ body {
 
 .header {
   text-align: center;
-  margin-bottom: 30px;
+  margin-bottom: 3rem;
 }
 
 .logo {
-  width: 80px;
-  height: 80px;
-  margin-bottom: 10px;
+  width: 8rem;
+  height: 8rem;
+  margin-bottom: 1rem;
   border-radius: 50%;
   box-shadow: 0 0 20px rgba(255,255,255,0.3);
 }
@@ -196,62 +180,53 @@ body {
 
 @keyframes float {
   0% { transform: translateY(0px); }
-  50% { transform: translateY(-10px); }
+  50% { transform: translateY(-1rem); }
   100% { transform: translateY(0px); }
 }
 
 .title {
-  font-size: 28px;
+  font-size: 2.8rem;
   font-weight: bold;
   text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-  margin-bottom: 10px;
+  margin-bottom: 1rem;
 }
 
 .subtitle {
-  font-size: 16px;
+  font-size: 1.6rem;
   color: rgba(255,255,255,0.8);
 }
 
 .card {
   background: rgba(255, 255, 255, 0.1);
-  border-radius: 20px;
-  padding: 25px;
-  width: 90%;
-  max-width: 400px;
-  backdrop-filter: blur(10px);
-  margin-bottom: 30px;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+  border-radius: 2rem;
+  padding: 2.5rem;
+  width: 100%;
+  max-width: 40rem;
+  backdrop-filter: blur(1rem);
+  margin-bottom: 3rem;
+  box-shadow: 0 0.8rem 3.2rem rgba(0,0,0,0.1);
   border: 1px solid rgba(255,255,255,0.2);
   transition: transform 0.3s ease;
 }
 
-.card:hover {
-  transform: translateY(-5px);
+.card:active {
+  transform: scale(0.98);
 }
 
 .planet-animation {
   position: relative;
-  width: 200px;
-  height: 200px;
+  width: 20rem;
+  height: 20rem;
   margin: 0 auto;
-}
-
-.rotating {
-  animation: rotate 20s linear infinite;
-}
-
-@keyframes rotate {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
 }
 
 .orbit {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 180px;
-  height: 180px;
-  margin: -90px 0 0 -90px;
+  width: 18rem;
+  height: 18rem;
+  margin: -9rem 0 0 -9rem;
   border: 2px solid rgba(255,255,255,0.2);
   border-radius: 50%;
   animation: orbit 10s linear infinite;
@@ -259,169 +234,110 @@ body {
 
 .satellite {
   position: absolute;
-  top: -5px;
+  top: -0.5rem;
   left: 50%;
-  width: 10px;
-  height: 10px;
+  width: 1rem;
+  height: 1rem;
   background: #fff;
   border-radius: 50%;
-  box-shadow: 0 0 10px #fff;
+  box-shadow: 0 0 1rem #fff;
 }
 
 .audio-player {
   background: rgba(0,0,0,0.2);
-  border-radius: 15px;
-  padding: 15px;
-  margin: 20px 0;
+  border-radius: 1.5rem;
+  padding: 1.5rem;
+  margin: 2rem 0;
 }
 
 .audio-info {
   display: flex;
   align-items: center;
-  gap: 10px;
-  font-size: 12px;
+  gap: 1rem;
+  font-size: 1.2rem;
 }
 
 .progress-bar {
   flex: 1;
-  height: 4px;
+  height: 0.4rem;
   background: rgba(255,255,255,0.2);
-  border-radius: 2px;
+  border-radius: 0.2rem;
 }
 
 .progress {
   width: 30%;
   height: 100%;
   background: #fff;
-  border-radius: 2px;
+  border-radius: 0.2rem;
 }
 
 .message-card {
   text-align: center;
-  padding: 20px;
+  padding: 2rem;
   position: relative;
 }
 
-.stars {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  margin-top: 15px;
-}
-
-.star {
-  width: 20px;
-  height: 20px;
-  background: rgba(255,255,255,0.8);
-  clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
-  animation: twinkle 1.5s ease-in-out infinite;
+.card-text {
+  font-size: 1.6rem;
+  margin: 1rem 0;
 }
 
 .message-bubble {
   background: rgba(255,255,255,0.15);
-  border-radius: 15px;
-  padding: 20px;
-  margin-bottom: 15px;
+  border-radius: 1.5rem;
+  padding: 2rem;
+  margin-bottom: 1.5rem;
   position: relative;
+  font-size: 1.4rem;
+  line-height: 2;
 }
 
 .message-bubble:after {
   content: '';
   position: absolute;
-  bottom: -10px;
+  bottom: -1rem;
   left: 50%;
   transform: translateX(-50%);
-  border-left: 10px solid transparent;
-  border-right: 10px solid transparent;
-  border-top: 10px solid rgba(255,255,255,0.15);
-}
-
-.message-stats {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  font-size: 14px;
-  color: rgba(255,255,255,0.8);
-}
-
-.footer {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  padding: 0 20px;
-}
-
-button {
-  width: 100%;
-  padding: 15px;
-  border-radius: 25px;
-  border: none;
-  font-size: 16px;
-  font-weight: bold;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-}
-
-.share-btn {
-  background: rgba(255, 255, 255, 0.2);
-  color: #fff;
-  backdrop-filter: blur(5px);
-}
-
-.create-btn {
-  background: #fff;
-  color: #2c3e50;
+  border-left: 1rem solid transparent;
+  border-right: 1rem solid transparent;
+  border-top: 1rem solid rgba(255,255,255,0.15);
 }
 
 .iconfont {
-  font-size: 20px;
+  font-size: 2rem;
 }
 
 @media (min-width: 768px) {
-  .footer {
-    flex-direction: row;
-    justify-content: center;
-    gap: 20px;
-  }
-  
-  button {
-    width: 200px;
+  html {
+    font-size: 10px;
   }
   
   .card {
-    padding: 30px;
+    padding: 3rem;
   }
 }
 </style>
 
 <script>
-// 获取URL参数中的音频ID
-const urlParams = new URLSearchParams(window.location.search);
-const audioId = urlParams.get('id');
+// 音频文件列表
+const audioFiles = [];
 
-// 设置音频源
-const audioPlayer = document.getElementById('audioPlayer');
-let playCount = 0;
-
-if (audioId) {
-  audioPlayer.src = `https://your-audio-server.com/audio/${audioId}.mp3`;
+for (let i = 1; i <= 26; i++) {
+  audioFiles.push(`./static/${i}.m4a`);
 }
 
-// 音频播放相关
-audioPlayer.addEventListener('play', function() {
-  playCount++;
-  document.getElementById('playCount').textContent = playCount;
-});
+// 获取音频播放器
+const audioPlayer = document.getElementById('audioPlayer');
+
+// 随机播放音频
+function playRandomAudio() {
+  const randomIndex = Math.floor(Math.random() * audioFiles.length);
+  audioPlayer.src = audioFiles[randomIndex];
+  audioPlayer.play();
+}
+
+// 点击卡片时播放随机音频
+document.querySelector('.card').addEventListener('click', playRandomAudio);
 
 // 更新进度条
 audioPlayer.addEventListener('timeupdate', function() {
@@ -441,32 +357,26 @@ audioPlayer.addEventListener('timeupdate', function() {
   progress.style.width = `${progressPercent}%`;
 });
 
-// 获取按钮元素
-const shareBtn = document.querySelector('.share-btn');
-const createBtn = document.querySelector('.create-btn');
-
-// 分享功能
-shareBtn.addEventListener('click', function() {
-  if (navigator.share) {
-    navigator.share({
-      title: '来自宇宙的传声筒',
-      text: '听听这段独特的声音',
-      url: window.location.href
-    })
-    .then(() => console.log('分享成功'))
-    .catch((error) => console.log('分享失败:', error));
-  } else {
-    alert('请手动复制链接分享给好友');
+// 禁止页面双击缩放
+document.addEventListener('touchstart', function (event) {
+  if (event.touches.length > 1) {
+    event.preventDefault();
   }
-});
+}, { passive: false });
 
-// 跳转到制作页面
-createBtn.addEventListener('click', function() {
-  window.location.href = '/pages/create/create.html';
-});
+let lastTouchEnd = 0;
+document.addEventListener('touchend', function (event) {
+  const now = (new Date()).getTime();
+  if (now - lastTouchEnd <= 300) {
+    event.preventDefault();
+  }
+  lastTouchEnd = now;
+}, false);
 
-// 随机生成点赞数
-document.getElementById('likeCount').textContent = Math.floor(Math.random() * 100);
+// 禁止页面缩放
+document.addEventListener('gesturestart', function (event) {
+  event.preventDefault();
+});
 </script>
 </body>
 </html>
