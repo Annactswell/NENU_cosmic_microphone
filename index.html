@@ -5,6 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>宇宙传声筒 - 播放页</title>
   <link rel="stylesheet" href="https://at.alicdn.com/t/font_2878668_urq5xu3py7.css">
+  <style>
+    audio::-webkit-media-controls {
+      display: none !important;
+    }
+    audio {
+      -webkit-appearance: none;
+      appearance: none;
+    }
+  </style>
 </head>
 <body style="background: url('./static/background.jpg') center/cover no-repeat fixed;">
 <div class="stars-container">
@@ -14,7 +23,7 @@
 
 <div class="container">
   <div class="header">
-    <img src="https://tse1-mm.cn.bing.net/th/id/OIP-C.8tlwbGsJvlNZwGAGL36W8AHaFS?rs=1&pid=ImgDetMain" class="logo animate-float" alt="宇宙传声筒">
+    <img src="./static/avatar.jpg" class="logo animate-float" alt="宇宙传声筒" style="object-fit: contain;">
     <h1 class="title">来自宇宙的传声筒</h1>
     <div class="subtitle">让声音跨越星际传递温暖</div>
   </div>
@@ -29,7 +38,7 @@
         </div>
         
         <div class="audio-player">
-          <audio id="audioPlayer" controls style="width: 100%; margin: 15px 0;">
+          <audio id="audioPlayer" style="width: 100%; margin: 15px 0;">
             <source src="" type="audio/m4a">
             您的浏览器不支持音频播放
           </audio>
@@ -49,14 +58,6 @@
         </div>
       </div>
     </div>
-
-    <!-- <div class="message">
-      <div class="message-bubble">
-        <p>这是一段专属于你的声音</p>
-        <p>来自一个想对你说悄悄话的人</p>
-        <p>希望这段声音能带给你温暖</p>
-      </div>
-    </div> -->
   </div>
 </div>
 
@@ -142,11 +143,11 @@ body {
 
 @keyframes shooting-star {
   0% {
-    transform: translateX(0) rotate(-45deg);
+    transform: translateX(1000px) translateY(0) rotate(-45deg);
     opacity: 1;
   }
   100% {
-    transform: translateX(1000px) rotate(-45deg);
+    transform: translateX(0) translateY(1000px) rotate(-45deg);
     opacity: 0;
   }
 }
